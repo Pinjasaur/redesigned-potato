@@ -1,3 +1,21 @@
+How to use this:
+
+- Install nvm: https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating
+- Clone & `cd` into the directory
+- Run `nvm install` to use the specified Node version
+- Run `npm install` to grab dependencies
+- Run `npm start` to start the app (creates the database if it's your first run)
+
+Using your HTTP client of choice (curl, private browser window, etc):
+
+- Navigate to <http://localhost:3000/__create__> and append your URL of choice via a `?url=` query parameter
+  - Take care to properly URL encode the URL query parameter
+  - For example, to create a short URL for `example.com` do: <http://localhost:3000/__create__?url=http%3A%2F%2Fexample.com%2F>
+- When you successfully create a short URL you'll receive a HTTP 201 and some plain text message, including the short URL
+- Navigating to <http://localhost:3000/your-short-url> will HTTP 302 redirect you
+  - If you add a `?debug=1` query parameter to your short URL you will instead get JSON output of the underlying database object without redirecting
+  - If you add a `?stats=1` query parameter to your short URL you will receive JSON output showing the last 24 hour, week, and all time requests to that short URL
+
 Spec:
 
 ```
@@ -82,3 +100,5 @@ reqs
   url_id, int, foreign key to urls.id
   created_at, date not null
 ```
+
+After writing this, I opted to keep it simpler and not store the `slug` and simply encode & decode it on the fly with the aforementioned Sqids library. Additionally, I didn't implement a `?slug=` query parameter when creating a short URL to keep it simpler.
