@@ -6,7 +6,7 @@ How to use this:
 - Run `npm install` to grab dependencies
 - Run `npm start` to start the app (creates the database if it's your first run)
 
-Using your HTTP client of choice (curl, private browser window, etc):
+Then, using your HTTP client of choice (curl, private browser window, etc):
 
 - Navigate to <http://localhost:3000/__create__> and append your URL of choice via a `?url=` query parameter
   - Take care to properly URL encode the URL query parameter

@@ -66,7 +66,8 @@ app.get('/__create__', async (req: Request, res: Response) => {
   try {
     const url = await Url.create({ url: req.query.url })
     const slug = sqids.encode([url.id])
-    return res.status(201).send(`Created new short URL: ${slug}`)
+    const hyperlink = `${req.protocol}://${req.hostname}:${PORT}/${slug}`
+    return res.status(201).send(`Created new short URL: <a href="${hyperlink}">${hyperlink}</a>`)
 
   } catch {
     return res.status(400).send()
