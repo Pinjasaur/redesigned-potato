@@ -101,4 +101,6 @@ reqs
   created_at, date not null
 ```
 
-After writing this, I opted to keep it simpler and not store the `slug` and simply encode & decode it on the fly with the aforementioned Sqids library. Additionally, I didn't implement a `?slug=` query parameter when creating a short URL to keep it simpler.
+---
+
+After writing this, I opted to keep it simpler and not store the `slug` and simply encode & decode it on the fly with the aforementioned Sqids library. Additionally, I didn't implement a `?slug=` query parameter when creating a short URL to keep it simpler. The rest of the system essentially went as-planned, though. TypeScript probably wasn't worth it (it wasn't as seamless at the ORM layer like I was hoping) but also didn't add a bunch of development time either.
